@@ -29,7 +29,7 @@ class KeyLogger:
             root_logger.handlers.clear()
 
         # Configure the root logger to the INFO level and set the format
-        logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+        logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s')
 
         # Create the logger 
         self.logger = logging.getLogger('keystroke_logger')
@@ -40,7 +40,7 @@ class KeyLogger:
         self.fileHandler.setLevel(logging.INFO)
 
         # Create the format for the output file log 
-        logOutFormat = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+        logOutFormat = logging.Formatter('%(levelname)s - %(message)s')
         self.fileHandler.setFormatter(logOutFormat)
 
         # Add the FileHandler to the logger 
