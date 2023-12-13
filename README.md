@@ -6,7 +6,7 @@ Brooke McWilliams
 
 Versioning
 ==========
-V1- Initial Start  
+V1- Initial start with keystroke log only
 
 General Info
 ============
